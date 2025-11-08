@@ -22,13 +22,14 @@ function App() {
 
   // Background image rotation effect
   useEffect(() => {
+    // Immediately advance the image to avoid initial delay
+    setCurrentBgIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
     const interval = setInterval(() => {
       setCurrentBgIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length)
     }, 5000) // Change image every 5 seconds
 
     return () => clearInterval(interval)
   }, [backgroundImages.length])
-
 
 
 
