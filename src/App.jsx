@@ -18,6 +18,8 @@ function App() {
     '/images/img6.jpg',
     '/images/img7.jpg',
     '/images/img8.jpg',
+    '/images/img9.jpg',
+    '/images/img10.jpg',
   ]
 
   // Background image rotation effect
@@ -26,7 +28,7 @@ function App() {
     setCurrentBgIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
     const interval = setInterval(() => {
       setCurrentBgIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length)
-    }, 5000) // Change image every 5 seconds
+    }, 4000) // Change image every 5 seconds
 
     return () => clearInterval(interval)
   }, [backgroundImages.length])
