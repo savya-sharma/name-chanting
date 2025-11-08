@@ -90,13 +90,13 @@ function App() {
       <div className="slider">
         <div className="con" ref={sliderRef}>
           <h3>{mantraText}</h3>
-          <span className="gola"></span>
+          <span className="flower">🌸</span>
           <h3>{mantraText}</h3>
-          <span className="gola"></span>
+          <span className="flower">🌸</span>
           <h3>{mantraText}</h3>
-          <span className="gola"></span>
+          <span className="flower">🌸</span>
           <h3>{mantraText}</h3>
-          <span className="gola"></span>
+          <span className="flower">🌸</span>
           <h3>{mantraText}</h3>
         </div>
       </div>
