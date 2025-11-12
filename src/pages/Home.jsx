@@ -5,7 +5,6 @@ import gsap from 'gsap'
 const Home = () => {
   const [count, setCount] = useState(0)
   const [showReset, setShowReset] = useState(false)
-  const [currentBgIndex, setCurrentBgIndex] = useState(0)
   const [currentMobileBgIndex, setCurrentMobileBgIndex] = useState(0)
   const sliderRef = useRef(null)
 
@@ -28,18 +27,12 @@ const Home = () => {
   // Check if mobile device
   const isMobile = window.innerWidth <= 600
 
-  // Background image slideshow
+  // Background image slideshow - Mobile only
   useEffect(() => {
     if (isMobile) {
       // Mobile: Simple slideshow
       const interval = setInterval(() => {
         setCurrentMobileBgIndex((prev) => (prev + 1) % backgroundImages.length)
-      }, 4000)
-      return () => clearInterval(interval)
-    } else {
-      // Desktop: Simple slideshow
-      const interval = setInterval(() => {
-        setCurrentBgIndex((prev) => (prev + 1) % backgroundImages.length)
       }, 4000)
       return () => clearInterval(interval)
     }
@@ -83,20 +76,7 @@ const Home = () => {
   return (
     <div>
       <main>
-        {/* Desktop Background image slideshow with fade effect */}
-        <div className="background-slideshow desktop-only" aria-hidden="true">
-          {backgroundImages.map((image, index) => (
-            <div
-              key={index}
-              className={`background-image ${index === currentBgIndex ? 'active' : ''}`}
-              style={{
-                backgroundImage: `url(${image})`,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Mobile Background image slideshow with GSAP animation */}
+        {/* Mobile Background image slideshow - Only for mobile devices */}
         <div className="mobile-background-slideshow mobile-only" aria-hidden="true">
           {backgroundImages.map((image, index) => (
             <div
