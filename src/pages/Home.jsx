@@ -6,6 +6,7 @@ const Home = () => {
   const [count, setCount] = useState(0)
   const [showReset, setShowReset] = useState(false)
   const [currentBgIndex, setCurrentBgIndex] = useState(0)
+  const [currentMobileBgIndex, setCurrentMobileBgIndex] = useState(0)
   const sliderRef = useRef(null)
 
   // Background images for the slideshow from public/images folder
@@ -24,16 +25,25 @@ const Home = () => {
     '/images/img12.jpg',
   ]
 
-  // Background image rotation effect
-  useEffect(() => {
-    // Immediately advance the image to avoid initial delay
-    setCurrentBgIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
-    const interval = setInterval(() => {
-      setCurrentBgIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length)
-    }, 4000) // Change image every 5 seconds
+  // Check if mobile device
+  const isMobile = window.innerWidth <= 600
 
-    return () => clearInterval(interval)
-  }, [backgroundImages.length])
+  // Background image slideshow
+  useEffect(() => {
+    if (isMobile) {
+      // Mobile: Simple slideshow
+      const interval = setInterval(() => {
+        setCurrentMobileBgIndex((prev) => (prev + 1) % backgroundImages.length)
+      }, 4000)
+      return () => clearInterval(interval)
+    } else {
+      // Desktop: Simple slideshow
+      const interval = setInterval(() => {
+        setCurrentBgIndex((prev) => (prev + 1) % backgroundImages.length)
+      }, 4000)
+      return () => clearInterval(interval)
+    }
+  }, [backgroundImages.length, isMobile])
 
 
 
@@ -73,12 +83,25 @@ const Home = () => {
   return (
     <div>
       <main>
-        {/* Background image slideshow with fade effect */}
-        <div className="background-slideshow" aria-hidden="true">
+        {/* Desktop Background image slideshow with fade effect */}
+        <div className="background-slideshow desktop-only" aria-hidden="true">
           {backgroundImages.map((image, index) => (
             <div
               key={index}
               className={`background-image ${index === currentBgIndex ? 'active' : ''}`}
+              style={{
+                backgroundImage: `url(${image})`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Mobile Background image slideshow with GSAP animation */}
+        <div className="mobile-background-slideshow mobile-only" aria-hidden="true">
+          {backgroundImages.map((image, index) => (
+            <div
+              key={index}
+              className={`mobile-bg-image ${index === currentMobileBgIndex ? 'active' : ''}`}
               style={{
                 backgroundImage: `url(${image})`,
               }}
