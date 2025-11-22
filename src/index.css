@@ -142,6 +142,7 @@ main {
     font-size: 1.25rem;
     font-weight: 700;
     cursor: pointer;
+    font-family: arnika;
     box-shadow: 0 3px 14px rgba(91, 122, 90, 0.12);
     transition:
         background 0.23s,
@@ -225,6 +226,7 @@ main {
     color: transparent;
     display: inline-block;
     margin: 0 10px;
+    font-family: arnika;
 }
 
 @media (max-width: 900px) {
@@ -243,7 +245,7 @@ main {
     white-space: nowrap;
     display: inline-block;
     animation-name: move;
-    animation-duration: 19s;
+    animation-duration: 35s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     min-width: 100vw;
