@@ -22,6 +22,8 @@ const Home = () => {
     '/images/img10.jpg',
     '/images/img11.jpg',
     '/images/img12.jpg',
+    '/images/img13.jpg',
+    '/images/img14.jpg',
   ]
 
   // Check if mobile device
@@ -78,6 +80,7 @@ const Home = () => {
       <main>
         {/* Mobile Background image slideshow - Only for mobile devices */}
         <div className="mobile-background-slideshow mobile-only" aria-hidden="true">
+          <img src="./images/lp-radha.jpg" alt="" />
           {backgroundImages.map((image, index) => (
             <div
               key={index}
