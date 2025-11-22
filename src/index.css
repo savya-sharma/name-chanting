@@ -255,7 +255,7 @@ main {
 
 @media (max-width: 600px) {
     .con {
-        animation-duration: 27s;
+        animation-duration: 50s;
     }
 }
 
